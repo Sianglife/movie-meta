@@ -1,40 +1,4 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { IAxiosOptions } from '../interfaces/axios';
-
-export function getMovieData(film_name: string) {
-    console.log(`Searching for ${film_name}`);
-    getNetflixData(film_name);
-}
-
-
-async function getNetflixData(film_name: string) {
-    const options: IAxiosOptions = {
-        method: 'GET',
-        url: 'https://netflix54.p.rapidapi.com/search/',
-        params: {
-            query: film_name,
-            offset: '0',
-            limit_titles: '50',
-            limit_suggestions: '20',
-            lang: 'en'
-        },
-        headers: {
-            'X-RapidAPI-Key': 'ffa8e4f868msh7474cdf1b8f20fep1ffd7djsn11d1efd64d01',
-            'X-RapidAPI-Host': 'netflix54.p.rapidapi.com'
-        }
-    };
-
-    try {
-        const response = await axios.request(options);
-        console.log(response.data);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-/*
-{
+const response = {
     "titles": [
         {
             "availability": {
@@ -11049,4 +11013,3 @@ async function getNetflixData(film_name: string) {
         }
     ]
 }
-*/
